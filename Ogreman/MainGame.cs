@@ -4,12 +4,16 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Ogreman;
 
-public class Game1 : Game
+public class MainGame : Game
 {
+    private const int WindowWidth = 640;
+    private const int WindowHeight = 360;
+    
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
+    private Canvas _canvas;
 
-    public Game1()
+    public MainGame()
     {
         _graphics = new GraphicsDeviceManager(this);
         Content.RootDirectory = "Content";
@@ -18,7 +22,7 @@ public class Game1 : Game
 
     protected override void Initialize()
     {
-        // TODO: Add your initialization logic here
+        _canvas = new Canvas(_graphics.GraphicsDevice, WindowWidth, WindowHeight);
 
         base.Initialize();
     }
