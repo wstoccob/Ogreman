@@ -6,10 +6,13 @@ namespace Ogreman;
 
 public class MainGame : Game
 {
-    private const int WindowWidth = 640;
-    private const int WindowHeight = 360;
+    private const int TargetWidth = 640;
+    private const int TargetHeight = 360;
+
+    private const int WindowWidth = 1024;
+    private const int WindowHeight = 720;
     
-    private GraphicsDeviceManager _graphics;
+    private readonly GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
     private Canvas _canvas;
 
@@ -22,8 +25,11 @@ public class MainGame : Game
 
     protected override void Initialize()
     {
-        _canvas = new Canvas(_graphics.GraphicsDevice, WindowWidth, WindowHeight);
+        SetResolution(_graphics, WindowWidth, WindowHeight);
+        _canvas = new Canvas(_graphics.GraphicsDevice, TargetWidth, TargetHeight);
+        _canvas.SetDestinationRectangle();
 
+        
         base.Initialize();
     }
 
@@ -31,25 +37,33 @@ public class MainGame : Game
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-        // TODO: use this.Content to load your game content here
     }
 
     protected override void Update(GameTime gameTime)
     {
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
-
-        // TODO: Add your update logic here
-
+        
+        
         base.Update(gameTime);
     }
 
     protected override void Draw(GameTime gameTime)
     {
-        GraphicsDevice.Clear(Color.CornflowerBlue);
-
-        // TODO: Add your drawing code here
-
+        _canvas.Activate();
+        _spriteBatch.Begin();
+        // TODO: Render some stuff here
+        _spriteBatch.End();
+        
+        _canvas.Render(_spriteBatch);
+        
         base.Draw(gameTime);
+    }
+
+    private void SetResolution(GraphicsDeviceManager graphics, int width, int height)
+    {
+        graphics.PreferredBackBufferWidth = width;
+        graphics.PreferredBackBufferHeight = height;
+        graphics.ApplyChanges();
     }
 }

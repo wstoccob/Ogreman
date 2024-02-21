@@ -20,6 +20,9 @@ public class Canvas
     public void SetDestinationRectangle()
     {
         var screen = _graphicsDevice.PresentationParameters.Bounds;
+        Console.WriteLine(_graphicsDevice.PresentationParameters.Bounds.Height);
+        Console.WriteLine(_graphicsDevice.PresentationParameters.Bounds.Width);
+
         var scaleX = (float)screen.Width / _target.Width;
         var scaleY = (float)screen.Height / _target.Height;
         var scale = Math.Min(scaleX, scaleY);
