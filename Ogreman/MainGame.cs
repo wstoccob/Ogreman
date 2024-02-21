@@ -10,13 +10,14 @@ public class MainGame : Game
     private const int TargetWidth = 640;
     private const int TargetHeight = 360;
 
-    private const int WindowWidth = 1024;
-    private const int WindowHeight = 720;
+    private const int WindowWidth = 1920;
+    private const int WindowHeight = 1080;
     
     private readonly GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
     private Canvas _canvas;
-    
+
+    private Sprite _backgroundPicture;
 
     public MainGame()
     {
@@ -30,7 +31,7 @@ public class MainGame : Game
         SetResolution(_graphics, WindowWidth, WindowHeight);
         
         _canvas = new Canvas(_graphics.GraphicsDevice, TargetWidth, TargetHeight);
-        
+        _backgroundPicture = new Sprite(LoadTexture2D("backgroundPicture"), new Vector2(0, 0));
         base.Initialize();
     }
 
@@ -52,8 +53,11 @@ public class MainGame : Game
     protected override void Draw(GameTime gameTime)
     {
         _canvas.Activate();
-        _spriteBatch.Begin();
-        // TODO: Render some stuff here
+        
+        _spriteBatch.Begin(samplerState: SamplerState.PointClamp);
+        
+        _backgroundPicture.Render(_spriteBatch);
+        
         _spriteBatch.End();
         
         _canvas.Render(_spriteBatch);
@@ -66,5 +70,10 @@ public class MainGame : Game
         graphics.PreferredBackBufferWidth = width;
         graphics.PreferredBackBufferHeight = height;
         graphics.ApplyChanges();
+    }
+
+    private Texture2D LoadTexture2D(string assetName)
+    {
+        return Content.Load<Texture2D>(assetName);
     }
 }

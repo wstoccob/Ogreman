@@ -3,12 +3,12 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Ogreman.Objects;
 
-public class Object
+public class Sprite
 {
     private Texture2D _texture;
     private Vector2 Position;
 
-    public Object(Texture2D texture, Vector2 position)
+    public Sprite(Texture2D texture, Vector2 position)
     {
         _texture = texture;
         Position = position;
