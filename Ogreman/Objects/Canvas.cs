@@ -2,8 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-
-namespace Ogreman;
+namespace Ogreman.Objects;
 
 public class Canvas
 {
