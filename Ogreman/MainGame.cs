@@ -16,6 +16,7 @@ public class MainGame : Game
     private readonly GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
     private Canvas _canvas;
+    
 
     public MainGame()
     {
