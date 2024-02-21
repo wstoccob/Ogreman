@@ -27,9 +27,8 @@ public class MainGame : Game
     protected override void Initialize()
     {
         SetResolution(_graphics, WindowWidth, WindowHeight);
+        
         _canvas = new Canvas(_graphics.GraphicsDevice, TargetWidth, TargetHeight);
-        _canvas.SetDestinationRectangle();
-
         
         base.Initialize();
     }

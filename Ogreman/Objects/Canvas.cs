@@ -14,6 +14,7 @@ public class Canvas
     {
         _graphicsDevice = graphicsDevice;
         _target = new RenderTarget2D(_graphicsDevice, width, height);
+        SetDestinationRectangle();
     }
 
     public void SetDestinationRectangle()
