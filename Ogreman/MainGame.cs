@@ -10,8 +10,8 @@ public class MainGame : Game
     private const int TargetWidth = 640;
     private const int TargetHeight = 360;
 
-    private const int WindowWidth = 1920;
-    private const int WindowHeight = 1080;
+    private const int WindowWidth = 1280;
+    private const int WindowHeight = 720;
     
     private readonly GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
