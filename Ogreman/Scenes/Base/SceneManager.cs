@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using Microsoft.Xna.Framework.Content;
 
-namespace Ogreman.Scenes;
+namespace Ogreman.Scenes.Base;
 
 public class SceneManager
 {

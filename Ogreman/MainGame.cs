@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Ogreman.Objects;
 using Ogreman.Scenes;
+using Ogreman.Scenes.Base;
 
 namespace Ogreman;
 
@@ -18,7 +19,7 @@ public class MainGame : Game
     private SpriteBatch _spriteBatch;
     private Canvas _canvas;
 
-    private SceneManager _sceneManager;
+    private readonly SceneManager _sceneManager;
 
     public MainGame()
     {
@@ -74,10 +75,5 @@ public class MainGame : Game
         graphics.PreferredBackBufferWidth = width;
         graphics.PreferredBackBufferHeight = height;
         graphics.ApplyChanges();
-    }
-
-    private Texture2D LoadTexture2D(string assetName)
-    {
-        return Content.Load<Texture2D>(assetName);
     }
 }

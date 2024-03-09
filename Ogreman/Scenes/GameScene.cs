@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Ogreman.Objects;
+using Ogreman.Scenes.Base;
 
 namespace Ogreman.Scenes;
 
