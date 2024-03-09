@@ -8,6 +8,8 @@ public class Sprite
     private Texture2D _texture;
     private Vector2 Position;
 
+    private Rectangle _rectangle => new((int)Position.X, (int)Position.Y, _texture.Width, _texture.Height);
+
     public Sprite(Texture2D texture, Vector2 position)
     {
         _texture = texture;
