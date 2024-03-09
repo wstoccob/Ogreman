@@ -6,16 +6,11 @@ namespace Ogreman.Scenes;
 public class SceneManager
 {
     private readonly Stack<IScene> scenes;
-    private ContentManager contentManager;
-
-    public SceneManager(ContentManager contentManager)
+    public SceneManager()
     {
         scenes = new();
-        this.contentManager = contentManager;
     }
     
-    
-
     public void AddScene(IScene scene)
     {
         scenes.Push(scene);

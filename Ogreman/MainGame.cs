@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Ogreman.Objects;
+using Ogreman.Scenes;
 
 namespace Ogreman;
 
@@ -17,13 +18,14 @@ public class MainGame : Game
     private SpriteBatch _spriteBatch;
     private Canvas _canvas;
 
-    private Sprite _backgroundPicture;
+    private SceneManager _sceneManager;
 
     public MainGame()
     {
         _graphics = new GraphicsDeviceManager(this);
         Content.RootDirectory = "Content";
         IsMouseVisible = true;
+        _sceneManager = new SceneManager();
     }
 
     protected override void Initialize()
@@ -31,13 +33,14 @@ public class MainGame : Game
         SetResolution(_graphics, WindowWidth, WindowHeight);
         
         _canvas = new Canvas(_graphics.GraphicsDevice, TargetWidth, TargetHeight);
-        _backgroundPicture = new Sprite(LoadTexture2D("backgroundPicture"), new Vector2(0, 0));
+        _sceneManager.AddScene(new StartScene(Content, _sceneManager));
         base.Initialize();
     }
 
     protected override void LoadContent()
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
+        _sceneManager.GetActiveScene().Load();
 
     }
 
@@ -46,6 +49,7 @@ public class MainGame : Game
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
         
+        _sceneManager.GetActiveScene().Update(gameTime);
         
         base.Update(gameTime);
     }
@@ -56,7 +60,7 @@ public class MainGame : Game
         
         _spriteBatch.Begin(samplerState: SamplerState.PointClamp);
         
-        _backgroundPicture.Render(_spriteBatch);
+        _sceneManager.GetActiveScene().Draw(_spriteBatch);
         
         _spriteBatch.End();
         
